@@ -1,8 +1,9 @@
 name             'strongSwan-scenarios'
-maintainer       ''
-maintainer_email ''
-license          ''
+maintainer       'Jerry Jackson'
+maintainer_email 'jerry.jackson@acommitteeoflunatics.com'
 description      'Installs/Configures strongSwan-scenarios'
-long_description 'Installs/Configures strongSwan-scenarios'
-version          '0.1.0'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          IO.read(File.join(File.dirname(__FILE__), 'VERSION'))
 
+depends 'strongSwan-VPN'
+recommends 'strongSwan-pki'

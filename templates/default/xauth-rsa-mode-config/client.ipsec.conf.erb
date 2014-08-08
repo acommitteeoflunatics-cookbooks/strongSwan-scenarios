@@ -1,7 +1,7 @@
 # ipsec.conf - strongSwan IPsec configuration file
 
 config setup
-    nat_traversal=<%=   node[:strongswan][:ipsec][:natt] %>
+    nat_traversal=<%=   node['strongswan']['ipsec']['natt'] %>
     charonstart=no
     plutostart=yes
     plutostderrlog=/var/log/pluto.log
@@ -11,9 +11,9 @@ conn %default
     keylife=20m
     rekeymargin=3m
     keyingtries=1
-    keyexchange=<%=     node[:strongswan][:ipsec][:keyexchange] %>
-    ike=<%=             node[:strongswan][:ipsec][:ike] %>
-    esp=<%=             node[:strongswan][:ipsec][:esp] %>
+    keyexchange=<%=     node['strongswan']['ipsec']['keyexchange'] %>
+    ike=<%=             node['strongswan']['ipsec']['ike'] %>
+    esp=<%=             node['strongswan']['ipsec']['esp'] %>
     pfs=no
 
 conn client
@@ -21,16 +21,16 @@ conn client
     auto=start
     left=%defaultroute
     leftcert=clientCert.pem
-    leftid=<%=          node[:strongswan][:ipsec][:remote][:id] %>
+    leftid=<%=          node['strongswan']['ipsec']['remote']['id'] %>
     leftfirewall=yes
     leftrsasigkey=%cert
     leftsourceip=%config
-    right=<%=           node[:strongswan][:ipsec][:public_ip] %>
+    right=<%=           node['strongswan']['ipsec']['public_ip'] %>
     rightcert=serverCert.pem
-    rightid=<%=         node[:strongswan][:ipsec][:local][:id] %>
+    rightid=<%=         node['strongswan']['ipsec']['local']['id'] %>
     rightrsasigkey=%cert
     rightsourceip=%any
-    rightsubnet=<%=     node[:strongswan][:ipsec][:local][:subnet] %>
+    rightsubnet=<%=     node['strongswan']['ipsec']['local']['subnet'] %>
     xauth_identity=client
     xauth=client
 
